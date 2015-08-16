@@ -22,7 +22,10 @@ exports.init_decal = function(){
 }
 
 exports.add_decal_by_sensor_payload = function(decal_name, collision_pt){
-	decal_src = m_scs.get_object_by_name(decal_name);
+	var decal_src = m_scs.get_object_by_name(decal_name);
+
+	//Тестовая декаль
+	add_debug1_by_sensor_payload(collision_pt);
 
 	//Копируем декаль в место удара
     var decal = m_obj.copy(decal_src, "decal" + String(++decal_num), false);
@@ -51,6 +54,23 @@ exports.add_decal_by_sensor_payload = function(decal_name, collision_pt){
         coll_dist:collision_pt.coll_dist,
         collision_pt:collision_pt
     });
+}
+
+function add_debug1_by_sensor_payload(collision_pt){
+	var decal_src_debug = m_scs.get_object_by_name('dec_debug1');
+
+	//Копируем декаль в место удара
+    var decal = m_obj.copy(decal_src_debug, "decal" + String(++decal_num), false);
+    m_scs.append_object(decal);
+
+    m_tsr.set_trans(collision_pt.coll_pos, decal_tsr);
+
+    m_quat.rotationTo(m_util.AXIS_Y, collision_pt.coll_norm, decal_rot);
+    m_trans.set_rotation_v(decal, decal_rot);
+    m_tsr.set_quat(decal_rot, decal_tsr);
+
+    m_trans.set_tsr(decal, decal_tsr);
+
 }
 
 });
