@@ -77,7 +77,7 @@ var players_mesh = [];
 exports.players = players;
 
 exports.userId = Math.random() * (20000 - 1) + 1;
-exports.SERVER_HOST = 'http://95.215.110.178:8091';
+exports.SERVER_HOST = 'http://95.215.110.178:80';
 exports.FRAME_RATE = 1000 /FRAME_RATE_V_SEK; //30 фреймов в секунду
 
 function socket_concstruct() {
