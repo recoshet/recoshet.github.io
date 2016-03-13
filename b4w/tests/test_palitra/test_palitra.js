@@ -53,7 +53,7 @@ function load_cb(data_id) {
     var obj = m_scenes.get_object_by_name('Cube');
     var nodes = new Array('Mat', 'RGB1');
 
-  //меняем цвет в ноде RGB
+    //меняем цвет в ноде RGB
     $('#color_input').change(function(){
         var rgb = hexToRgb($(this).val());
         $('#vivod_rgb').text(rgb.r+', '+rgb.g+', '+rgb.b);
@@ -67,9 +67,9 @@ function load_cb(data_id) {
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
+        r: parseInt(result[1], 16)/255,
+        g: parseInt(result[2], 16)/255,
+        b: parseInt(result[3], 16)/255
     } : null;
 }
 
